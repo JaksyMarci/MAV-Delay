@@ -49,6 +49,7 @@ app.get('/',  (req, res) => {
           <h1>A mai nap soran a MAV ${sum} percet kesett</h1>
           <h2>Today, the Hungarian National Railway had ${sum} minutes of delay collectively</h2>
         </div>
+        
       </body>
     </html>
   `);
@@ -80,6 +81,7 @@ setInterval(() => {
   //the payload needed for the api is the following:
   //{"a":"TRAINS","jo":{"history":false,"id":false}}
   //http://vonatinfo.mav-start.hu/map.aspx/getData
+  //this isn't a public API, I just reverse engineered the calls on the vonatinfo website.
 }, 60000);
 
 app.listen(PORT, HOST, () => {
