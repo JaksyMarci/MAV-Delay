@@ -1,11 +1,17 @@
-var http = require('http');
-const axios = require('axios').default;
+'use strict';
 
+const express = require('express');
+const app = express();
+const PORT = 8080;
+const HOST = '0.0.0.0';
+const axios = require('axios').default;
+//we need express
 //MÁV (hungarian railways) delay counter app
 
 let map = new Map();
 
-server = http.createServer(function (req, res) {
+
+app.get('/',  (req, res) => {
   let sum = 0;
   map.forEach((value, key) => {
     if (typeof (value) == "number") {
@@ -31,8 +37,8 @@ setInterval(() => {
   if (date_time.getHours == 0 && date_time.getMinutes == 0) {
     map.clear();
   }
-  axios.post('http://vonatinfo.mav-start.hu/map.aspx/getData', { "a": "TRAINS", "jo": { "history": false, "id": false } })
-    .then(function (response) {
+  axios.post('http://vonatinfo.mav-start.hu/map.aspx/getData', { "a": "TRAINS", "jo": { "history": false, "id": false }})
+  .then(function (response) {
       //console.log(response['data']['d']['result']['Trains']);
       const trains = response['data']['d']['result']['Trains']['Train'];
       //console.log(trains);
@@ -42,8 +48,8 @@ setInterval(() => {
 
       });
       //console.log(map)
-    })
-    .catch(function (error) {
+  })
+  .catch(function (error) {
       console.log(error);
     });
 
@@ -52,4 +58,6 @@ setInterval(() => {
   //http://vonatinfo.mav-start.hu/map.aspx/getData
 }, 60000);
 
-server.listen(8080, 'localhost'); 
+app.listen(PORT, HOST, () => {
+  console.log(`Listening on ${HOST}:${PORT}`);
+}); 
