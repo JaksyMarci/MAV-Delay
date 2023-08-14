@@ -5,7 +5,8 @@ const app = express();
 const PORT = 8080;
 const HOST = '0.0.0.0';
 const axios = require('axios').default;
-//we need express
+app.set('trust proxy', true);
+
 //MÁV (hungarian railways) delay counter app
 
 let map = new Map();
