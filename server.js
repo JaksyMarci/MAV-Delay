@@ -59,9 +59,11 @@ app.get('/',  (req, res) => {
 setInterval(() => {
 
   let date_time = new Date(Date.now());
-  if (date_time.getHours == 0 && date_time.getMinutes == 0) {
+  if (date_time.getHours() == 0 && date_time.getMinutes() == 0) {
+    //this is kind of dumb, but it does the job.
     map.clear();
   }
+  
   axios.post('http://vonatinfo.mav-start.hu/map.aspx/getData', { "a": "TRAINS", "jo": { "history": false, "id": false }})
   .then(function (response) {
       //console.log(response['data']['d']['result']['Trains']);
