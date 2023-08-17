@@ -7,6 +7,8 @@ Visit the live website [here](https://data-centaur-395912.ey.r.appspot.com/)
 
 //Under development//
 
+Note: This project's point was not to develop something that's useful or a complete full application, but rather a way for me to learn and practice Docker and Google Cloud.
+
 TODO:
 
 * A non-stupid way to store the daily statistics, e.g. a proper database. As of now, if the image gets cold booted, the data may be deleted. To prevent this, manual scaling is used, which is bad.
